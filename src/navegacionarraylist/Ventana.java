@@ -5,6 +5,7 @@
 package navegacionarraylist;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,6 +53,13 @@ public class Ventana extends javax.swing.JFrame {
         ultimo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         indice = new javax.swing.JLabel();
+        annadir = new javax.swing.JButton();
+        borrar = new javax.swing.JButton();
+        editar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,15 +72,15 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
-        txtNombre.setText("jTextField1");
+        txtNombre.setText("nombre");
 
         jLabel2.setText("Edad:");
 
         jLabel3.setText("email:");
 
-        txtEdad.setText("jTextField2");
+        txtEdad.setText("edad");
 
-        txtEmail.setText("jTextField3");
+        txtEmail.setText("email");
 
         anterior.setText("<");
         anterior.addActionListener(new java.awt.event.ActionListener() {
@@ -104,20 +112,62 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel4.setText("años");
 
-        indice.setText("jLabel5");
+        indice.setText("página");
+
+        annadir.setText("Añadir");
+        annadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                annadirActionPerformed(evt);
+            }
+        });
+
+        borrar.setText("Borrar");
+        borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarActionPerformed(evt);
+            }
+        });
+
+        editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
+
+        guardar.setText("Guardar");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("PERSONAS");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(editar)
+                            .addComponent(annadir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(guardar)))
+                    .addComponent(jSeparator2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(indice)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel3))
                             .addGap(18, 18, 18)
@@ -134,19 +184,40 @@ public class Ventana extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(primero)
                             .addGap(8, 8, 8)
-                            .addComponent(anterior)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(posterior)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ultimo))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(indice))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(anterior)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(posterior)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(ultimo))))))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(indice)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(annadir)
+                            .addComponent(borrar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(guardar)
+                            .addComponent(editar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,13 +230,15 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(anterior)
                     .addComponent(posterior)
                     .addComponent(primero)
                     .addComponent(ultimo))
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(indice)
+                .addGap(13, 13, 13))
         );
 
         pack();
@@ -203,6 +276,64 @@ public class Ventana extends javax.swing.JFrame {
         contador = personas.size()-1;
     }//GEN-LAST:event_ultimoActionPerformed
 
+    private void annadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annadirActionPerformed
+        // TODO add your handling code here:
+        String nombre = JOptionPane.showInputDialog("Nombre: ");
+        String txt = JOptionPane.showInputDialog("Edad: ");
+        int edad = Integer.parseInt (txt);
+        String email = JOptionPane.showInputDialog("Email: ");
+                
+        Persona p = new Persona (nombre, edad, email);
+        personas.add (p);
+        
+        JOptionPane.showMessageDialog (null, "Añadido " + nombre + ", " + edad + " años");
+        
+        contador = personas.size()-1;
+        display (personas.size()-1);
+    }//GEN-LAST:event_annadirActionPerformed
+
+    private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
+        // TODO add your handling code here:
+        personas.remove(contador);
+        if (contador < personas.size()){
+            display (contador);
+        } else {
+            display (personas.size()-1);
+            contador = personas.size()-1;
+        }
+        
+    }//GEN-LAST:event_borrarActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        // TODO add your handling code here:
+        boolean bool = true;
+        do {
+            String txt = JOptionPane.showInputDialog("Editar: "
+                    + "\n(1) Nombre "
+                    + "\n(2) Edad "
+                    + "\n(3) Email"
+                    + "\n(4) Salir");
+            int opc = Integer.parseInt(txt);
+            switch (opc){
+                case 1: 
+                    String nombre = JOptionPane.showInputDialog("Nombre: ");
+                    personas.get(contador).setNombre (nombre);
+                    break;
+                case 2: String s = JOptionPane.showInputDialog("Edad: ");
+                    int edad = Integer.parseInt (s);
+                    personas.get(contador).setEdad (edad);
+                    break;
+                case 3: 
+                    String email = JOptionPane.showInputDialog("Email: ");
+                    personas.get(contador).setEmail (email);
+                    break;
+                case 4: 
+                    bool = false;
+                    break;
+            }
+        } while (true);
+    }//GEN-LAST:event_editarActionPerformed
+
     private void display (int i){
         txtNombre.setText(personas.get(i).getNombre());
         txtEdad.setText("" + personas.get(i).getEdad());
@@ -236,13 +367,20 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton annadir;
     private javax.swing.JButton anterior;
+    private javax.swing.JButton borrar;
+    private javax.swing.JButton editar;
+    private javax.swing.JButton guardar;
     private javax.swing.JLabel indice;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton posterior;
     private javax.swing.JButton primero;
     private javax.swing.JTextField txtEdad;

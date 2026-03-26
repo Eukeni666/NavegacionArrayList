@@ -28,6 +28,15 @@ public class Persona {
     public String getEmail (){
         return email;
     }
+    public void setNombre (String s){
+        nombre = s;
+    }
+    public void setEdad (int i){
+        edad = i;
+    }
+    public void setEmail (String s){
+        email = s;
+    }
     
     @Override
     public String toString () {
