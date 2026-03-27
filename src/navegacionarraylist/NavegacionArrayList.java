@@ -54,32 +54,33 @@ Nuevo
 Guardar
 Editar
 Borrar
+* 
 Funcionalidades a implementar:
 Nuevo
-Limpia los campos de texto.
-Permite introducir los datos de una nueva persona.
-Prepara la aplicación para añadir un nuevo registro.
+    Limpia los campos de texto.
+    Permite introducir los datos de una nueva persona.
+    Prepara la aplicación para añadir un nuevo registro.
 Guardar
-Añade la nueva persona al ArrayList.
-Muestra el nuevo elemento añadido.
-Actualiza la posición actual.
+    Añade la nueva persona al ArrayList.
+    Muestra el nuevo elemento añadido.
+    Actualiza la posición actual.
 Editar
-Permite modificar los datos de la persona mostrada.
-Guarda los cambios en el ArrayList.
+    Permite modificar los datos de la persona mostrada.
+    Guarda los cambios en el ArrayList.
 Borrar
-Elimina la persona actual del ArrayList.
-Tras borrar:
-Si quedan elementos, muestra el siguiente.
-Si se borra el último, muestra el anterior.
-Si no quedan elementos, limpia los campos.
+    Elimina la persona actual del ArrayList.
+    Tras borrar:
+        Si quedan elementos, muestra el siguiente.
+        Si se borra el último, muestra el anterior.
+        Si no quedan elementos, limpia los campos.
 Requisitos adicionales:
-Usa una variable int posicionActual para controlar la posición dentro del ArrayList.
-Implementa control de errores para:
-Campos vacíos.
-Edad no numérica (NumberFormatException).
-Intentar borrar cuando no hay elementos.
-Muestra mensajes informativos mediante JOptionPane cuando sea necesario.
-Mantén separada la clase Persona de la clase de la interfaz gráfica.
+    Usa una variable int posicionActual para controlar la posición dentro del ArrayList.
+    Implementa control de errores para:
+    Campos vacíos.
+    Edad no numérica (NumberFormatException).
+    Intentar borrar cuando no hay elementos.
+    Muestra mensajes informativos mediante JOptionPane cuando sea necesario.
+    Mantén separada la clase Persona de la clase de la interfaz gráfica.
 Última modificación: lunes, 23 de marzo de 2026, 10:00
 Ir a...
  * @author e.fresco
@@ -107,11 +108,11 @@ public class NavegacionArrayList {
         Ventana v = new Ventana (personas);
         v.setVisible(true);
         
-        int contador = 0;
-        for (Persona p: personas){
-            System.out.println((contador + 1) + " de " + personas.size() + ". " + p);
-            contador ++;
-        }
+//        int contador = 0;
+//        for (Persona p: personas){
+//            System.out.println((contador + 1) + " de " + personas.size() + ". " + p);
+//            contador ++;
+//        }
         
     }
     

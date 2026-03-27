@@ -56,10 +56,10 @@ public class Ventana extends javax.swing.JFrame {
         annadir = new javax.swing.JButton();
         borrar = new javax.swing.JButton();
         editar = new javax.swing.JButton();
-        guardar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        guardar = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,14 +72,17 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
+        txtNombre.setEditable(false);
         txtNombre.setText("nombre");
 
         jLabel2.setText("Edad:");
 
         jLabel3.setText("email:");
 
+        txtEdad.setEditable(false);
         txtEdad.setText("edad");
 
+        txtEmail.setEditable(false);
         txtEmail.setText("email");
 
         anterior.setText("<");
@@ -135,12 +138,17 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        guardar.setText("Guardar");
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("PERSONAS");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +157,7 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editar)
@@ -156,10 +165,9 @@ public class Ventana extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(guardar)))
-                    .addComponent(jSeparator2))
+                            .addComponent(guardar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 2, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -194,7 +202,7 @@ public class Ventana extends javax.swing.JFrame {
                                     .addComponent(posterior)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(ultimo))))))
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,9 +218,9 @@ public class Ventana extends javax.swing.JFrame {
                             .addComponent(annadir)
                             .addComponent(borrar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(guardar)
-                            .addComponent(editar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editar)
+                            .addComponent(guardar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
@@ -257,7 +265,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_anteriorActionPerformed
 
     private void posteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posteriorActionPerformed
-        // TODO add your handling code here:
+        // Si no estás en el último
         if (contador < personas.size()-1){
             display (contador + 1);
             contador ++;
@@ -265,15 +273,19 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_posteriorActionPerformed
 
     private void primeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeroActionPerformed
-        // TODO add your handling code here:
-        display (0);
-        contador = 0;
+        // si hay algún elemento
+        if (personas.size() != 0){
+            display (0);
+            contador = 0;
+        }
     }//GEN-LAST:event_primeroActionPerformed
 
     private void ultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ultimoActionPerformed
         // TODO add your handling code here:
-        display (personas.size()-1);
-        contador = personas.size()-1;
+        if (personas.size() != 0){
+            display (personas.size()-1);
+            contador = personas.size()-1;
+        }
     }//GEN-LAST:event_ultimoActionPerformed
 
     private void annadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annadirActionPerformed
@@ -294,45 +306,81 @@ public class Ventana extends javax.swing.JFrame {
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         // TODO add your handling code here:
-        personas.remove(contador);
-        if (contador < personas.size()){
-            display (contador);
+        if (personas.size() > 1) {
+            personas.remove(contador);
+            if (contador < personas.size()){
+                display (contador);
+            } else {
+                display (personas.size()-1);
+                contador = personas.size()-1;
+            }
+        } else if (personas.size() == 1){
+            personas.remove(contador);
+            txtNombre.setText("");
+            txtEdad.setText ("0");
+            txtEmail.setText("");
+            contador = 0;
+            indice.setText(contador + " de " + personas.size());
         } else {
-            display (personas.size()-1);
-            contador = personas.size()-1;
+            txtNombre.setText("");
+            txtEdad.setText ("0");
+            txtEmail.setText("");
         }
+        
         
     }//GEN-LAST:event_borrarActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         // TODO add your handling code here:
-        boolean bool = true;
-        do {
-            String txt = JOptionPane.showInputDialog("Editar: "
-                    + "\n(1) Nombre "
-                    + "\n(2) Edad "
-                    + "\n(3) Email"
-                    + "\n(4) Salir");
-            int opc = Integer.parseInt(txt);
-            switch (opc){
-                case 1: 
-                    String nombre = JOptionPane.showInputDialog("Nombre: ");
-                    personas.get(contador).setNombre (nombre);
-                    break;
-                case 2: String s = JOptionPane.showInputDialog("Edad: ");
-                    int edad = Integer.parseInt (s);
-                    personas.get(contador).setEdad (edad);
-                    break;
-                case 3: 
-                    String email = JOptionPane.showInputDialog("Email: ");
-                    personas.get(contador).setEmail (email);
-                    break;
-                case 4: 
-                    bool = false;
-                    break;
-            }
-        } while (true);
+        //Persona p = personas.get (contador);    
+        txtNombre.setEditable(true);
+        txtEdad.setEditable(true);
+        txtEmail.setEditable(true);    
+        
+//        boolean bool = true;
+//        do {
+//            String txt = JOptionPane.showInputDialog("Editar: "
+//                    + "\n(1) Nombre "
+//                    + "\n(2) Edad "
+//                    + "\n(3) Email"
+//                    + "\n(4) Salir");
+//            int opc = Integer.parseInt(txt);
+//            switch (opc){
+//                case 1: 
+//                    String nombre = JOptionPane.showInputDialog("Nombre: ");
+//                    personas.get(contador).setNombre (nombre);
+//                    break;
+//                case 2: String s = JOptionPane.showInputDialog("Edad: ");
+//                    int edad = Integer.parseInt (s);
+//                    personas.get(contador).setEdad (edad);
+//                    break;
+//                case 3: 
+//                    String email = JOptionPane.showInputDialog("Email: ");
+//                    personas.get(contador).setEmail (email);
+//                    break;
+//                case 4: 
+//                    bool = false;
+//                    return;
+//                    
+//            }
+//        } while (true);
+//        
+    
     }//GEN-LAST:event_editarActionPerformed
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        String email = txtEmail.getText();
+        
+        if (contador != 0){
+            personas.get(contador).setNombre(nombre);
+            personas.get(contador).setEdad (edad);
+            personas.get(contador).setEmail (email);
+        }
+        
+    }//GEN-LAST:event_guardarActionPerformed
 
     private void display (int i){
         txtNombre.setText(personas.get(i).getNombre());
